@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ModifRepository;
+use App\Repository\MotifRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ModifRepository::class)]
+#[ORM\Entity(repositoryClass: MotifRepository::class)]
 class Motif
 {
     #[ORM\Id]
@@ -21,7 +21,7 @@ class Motif
     /**
      * @var Collection<int, Prestation>
      */
-    #[ORM\OneToMany(targetEntity: Prestation::class, mappedBy: 'Ãmotif')]
+    #[ORM\OneToMany(targetEntity: Prestation::class, mappedBy: 'motif')]
     private Collection $prestations;
 
     public function __construct()
@@ -58,7 +58,7 @@ class Motif
     {
         if (!$this->prestations->contains($prestation)) {
             $this->prestations->add($prestation);
-            $prestation->setÃmotif($this);
+            $prestation->setmotif($this);
         }
 
         return $this;
@@ -68,8 +68,8 @@ class Motif
     {
         if ($this->prestations->removeElement($prestation)) {
             // set the owning side to null (unless already changed)
-            if ($prestation->getÃmotif() === $this) {
-                $prestation->setÃmotif(null);
+            if ($prestation->getmotif() === $this) {
+                $prestation->setmotif(null);
             }
         }
 

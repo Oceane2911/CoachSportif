@@ -29,7 +29,7 @@ class Prestation
 
     #[ORM\ManyToOne(inversedBy: 'prestations')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Motif $Ãmotif = null;
+    private ?Motif $motif = null;
 
     #[ORM\ManyToOne(inversedBy: 'prestations')]
     #[ORM\JoinColumn(nullable: false)]
@@ -102,14 +102,14 @@ class Prestation
         return $this;
     }
 
-    public function getÃmotif(): ?Motif
+    public function getmotif(): ?Motif
     {
-        return $this->Ãmotif;
+        return $this->motif;
     }
 
-    public function setÃmotif(?Motif $Ãmotif): static
+    public function setmotif(?Motif $motif): static
     {
-        $this->Ãmotif = $Ãmotif;
+        $this->motif = $motif;
 
         return $this;
     }
