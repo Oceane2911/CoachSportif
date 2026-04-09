@@ -14,22 +14,13 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/')]
 final class PrestationController extends AbstractController
 {
-    #[Route(name: 'app_prestation_index', methods: ['GET'])]
+    #[Route('/', name: 'app_prestation_index', methods: ['GET'])]
     public function index(PrestationRepository $prestationRepository): Response
     {
         return $this->render('prestation/index.html.twig', [
             'prestations' => $prestationRepository->findAll(),
         ]);
     }
-
-    #[Route('/request',name:'app_prestation_request', methods:['GET'])]
-    public function request(PrestationRepository $prestationRepository): Response
-    {
-        return $this->render('prestation/request.html.twig', [
-            'prestations' => $prestationRepository->findAll(),
-        ]);
-    }
-
 
     #[Route('/new', name: 'app_prestation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -42,7 +33,7 @@ final class PrestationController extends AbstractController
             $entityManager->persist($prestation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_prestation_request', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_validation', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('prestation/new.html.twig', [
@@ -51,7 +42,7 @@ final class PrestationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_prestation_show', methods: ['GET'])]
+    #[Route('prestation/{id}', name: 'app_prestation_show', methods: ['GET'])]
     public function show(Prestation $prestation): Response
     {
         return $this->render('prestation/show.html.twig', [
@@ -59,7 +50,7 @@ final class PrestationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_prestation_edit', methods: ['GET', 'POST'])]
+    #[Route('/prestation/{id}/edit', name: 'app_prestation_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Prestation $prestation, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PrestationType::class, $prestation);
@@ -77,7 +68,7 @@ final class PrestationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_prestation_delete', methods: ['POST'])]
+    #[Route('prestation/{id}', name: 'app_prestation_delete', methods: ['POST'])]
     public function delete(Request $request, Prestation $prestation, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$prestation->getId(), $request->getPayload()->getString('_token'))) {

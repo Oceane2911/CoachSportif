@@ -4,38 +4,46 @@
 {% endblock %}
 
 {% block body %}
-<div class="prestation">
-	<table>
-		<thead>
-			<tr>
-				<th>Nom</th>
-				<th>Prenom</th>
-				<th>Email</th>
-				<th>Telephone</th>
-				<th>Motif</th>
-				<th>Coach</th>
-				<th>Date</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for prestation in prestations %}
-				{% if not (prestation.isValid) %}
-					<tr>
-						<td>{{prestation.nom}}</td>
-						<td>{{prestation.prenom}}</td>
-						<td>{{prestation.email}}</td>
-						<td>{{prestation.tel}}</td>
-						<td>{{prestation.motif.nom}}</td>
-						<td>{{prestation.coach.nom}}</td>
-						<td>{{prestation.date|date("d m T H:i")}}</td>
-						<td>
-							<form method="post" action="{{ path('app_prestation_validate', {id: prestation.id}) }}">
-								<button type="submit">Valider</button>
-							</form>
-						</td>
-					</tr>
-				{% endif %}
-			{% endfor %}
-		</tbody>
-	</tbody>
-</table></div {% endblock %}
+	<div class="prestation">
+		<h1>Demande de rendez-vous</h1>
+		<table class='table'>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Email</th>
+					<th>Telephone</th>
+					<th>Date</th>
+					<th>Type Séance</th>
+					<th>Coach</th>
+					<th>Edit</th>
+					<th>Validation</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for prestation in prestations %}
+					{% if not (prestation.isValid) %}
+						<tr>
+							<td>{{ prestation.nom }}</td>
+							<td>{{ prestation.prenom }}</td>
+							<td>{{ prestation.email }}</td>
+							<td>{{ prestation.tel }}</td>
+							<td>{{ prestation.date ? prestation.date|date('Y-m-d H:i:s') : '' }}</td>
+							<td>{{ prestation.motif.nom}}</td>
+							<td>{{ prestation.coach.nom}}
+								{{prestation.coach.prenom}}</td>
+							<td>
+								<a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}">edit</a>
+							</td>
+							<td>
+								<form method="post" action="{{ path('app_prestation_validate', {id: prestation.id}) }}" class="form-wrapper">
+									<button type="submit" class='btn'>Valider</button>
+								</form>
+							</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

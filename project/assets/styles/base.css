@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 /* nav */
 nav {
@@ -41,6 +42,7 @@ nav {
     padding-left: 2rem;
     padding-right: 2rem;
     border-radius: 10rem;
+    border: none;
 }
 
 /* centrage info header body */
