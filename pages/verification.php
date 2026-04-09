@@ -1,5 +1,28 @@
-<?php 
-include 'config/config.php';
+<?php
+session_start();
+require_once '../config/config.php';
+
+$uuid = $_GET['uuid'] ?? '';
+
+if (empty($uuid)) {
+    header('Location: no-access.php');
+    die;
+}
+
+$uuidVerified = $pdo->prepare("
+    SELECT p.nom, p.prenom, p.email
+    FROM document d
+    JOIN prestation p ON d.prestation_id = p.id
+    WHERE d.uuid = UNHEX(REPLACE(:uuid, '-', ''))
+    LIMIT 1
+");
+$uuidVerified->execute([':uuid' => $uuid]);
+$prestation = $uuidVerified->fetch(PDO::FETCH_ASSOC);
+
+if (!$prestation) {
+    header('Location: ../no-access.php');
+    die;
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -8,7 +31,7 @@ include 'config/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitZone - Votre Salle de Sport</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/documents.css">
+    <link rel="stylesheet" href="../assets/css/verification.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -17,7 +40,7 @@ include 'config/config.php';
             <a href="../index.php" class="logo"><img src="../assets/img/logo.svg" alt="FitZone Logo"></a>
             <ul>
                 <li><a href="../index.php">accueil</a></li>
-                <li><a href="documents.php">documents</a></li>
+                <li><a href="verification.php">documents</a></li>
                 <li><a href="formulaire.php">contact</a></li>
             </ul>
         </nav>
@@ -30,7 +53,7 @@ include 'config/config.php';
                 <p>Accédez à vos documents personnalisés en toute sécurité.<br>Entrez votre code secret reçu par email pour consulter les contenus envoyés par votre coach sportif.</p>
             </article>
             <div class="form-container">
-                <form action="documents.php" method="post">
+                <form action="verification.php" method="post">
                     <div class="input">
                         <label for="code_secret">code</label>
                         <input type="password" name="code_secret" placeholder="Entrez votre code secret..." required>

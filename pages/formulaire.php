@@ -111,6 +111,7 @@ $max_date = date('Y-m-d\T23:00', strtotime("+30 day"));
 </script>
 
 <body>
+<<<<<<< Updated upstream
 
 <!-- ================ HEADER  ================ -->
 <header>
@@ -213,6 +214,26 @@ $max_date = date('Y-m-d\T23:00', strtotime("+30 day"));
                                 default:         echo "Date invalide.";
                             } ?>
                         </div>
+=======
+    <header>
+        <nav>
+            <a href="index.php" class="logo"><img src="../assets/img/logo.svg" alt="FitZone Logo"></a>
+            <ul>
+                <li><a href="../index.php">accueil</a></li>
+                <li><a href="verification.php">documents</a></li>
+                <li><a href="formulaire.php">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <article class="formulaire">
+                <h1>Rendez-vous</h1>
+                    <?php if (isset($_GET['succes']) && $_GET['succes'] == 1) : ?>
+                        <div class="message_succes">
+                            <p>Votre demande à bien était envoyer</p>
+                        </div>  
+>>>>>>> Stashed changes
                     <?php endif ?>
                 </div>
 
