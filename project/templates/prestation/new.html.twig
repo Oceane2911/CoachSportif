@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html.twig' %}
 
 {% block title %}New Prestation
@@ -17,3 +18,26 @@
 	</div>
 
 {% endblock %}
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}New Prestation
+{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('styles/form.css')}}">
+{% endblock %}
+
+{% block body %}
+	<div class="info">
+		<a href="{{ path('app_prestation_index') }}" class="return">&#8592;</a>
+		<h1>Création rendez-vous</h1>
+
+	</div>
+	<div class="center">
+		<div class="form-wrapper">
+			{{ include('prestation/_form.html.twig') }}
+		</div>
+	</div>
+
+{% endblock %}
+>>>>>>> b2
