@@ -4,37 +4,38 @@
 {% endblock %}
 
 {% block body %}
-	<div class="prestation">
-		<form>
-			<table>
-				<thead>
+<div class="prestation">
+	<table>
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Email</th>
+				<th>Telephone</th>
+				<th>Motif</th>
+				<th>Coach</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for prestation in prestations %}
+				{% if not (prestation.isValid) %}
 					<tr>
-						<td>Nom</td>
-						<td>Prenom</td>
-						<td>Email</td>
-						<td>Telephone</td>
-						<td>Motif</td>
-						<td>Coach</td>
-						<td>Date</td>
+						<td>{{prestation.nom}}</td>
+						<td>{{prestation.prenom}}</td>
+						<td>{{prestation.email}}</td>
+						<td>{{prestation.tel}}</td>
+						<td>{{prestation.motif.nom}}</td>
+						<td>{{prestation.coach.nom}}</td>
+						<td>{{prestation.date|date("d m T H:i")}}</td>
+						<td>
+							<form method="post" action="{{ path('app_prestation_validate', {id: prestation.id}) }}">
+								<button type="submit">Valider</button>
+							</form>
+						</td>
 					</tr>
-				</thead>
-				<tbody>
-					{% for prestation in prestations %}
-						{% if not (prestation.isValid) %}
-							<tr>
-								<td>{{prestation.nom}}</td>
-								<td>{{prestation.prenom}}</td>
-								<td>{{prestation.email}}</td>
-								<td>{{prestation.tel}}</td>
-								<td>{{prestation.motif.nom}}</td>
-								<td>{{prestation.coach.nom}}</td>
-								<td>{{prestation.date ? prestation.date|date('d m Y H:i') : ''}}</td>
-								<td></td>
-							</tr>
-						{% endif %}
-					{% endfor %}
-				</tbody>
-			</form>
+				{% endif %}
+			{% endfor %}
 		</tbody>
-	</div>
-{% endblock %}
+	</tbody>
+</table></div {% endblock %}
