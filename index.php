@@ -8,7 +8,7 @@ include 'includes/header.php';
     <section id="hero" class="hero">
         <h1>Transformez Votre Corps</h1>
         <p>Atteignez vos objectifs fitness avec nos programmes personnalisés</p>
-        <a href="pages/contact.php" class="btn">Rejoignez-nous</a>
+        <a href="pages/formulaire.php" class="btn">Rejoignez-nous</a>
     </section>
 
     <!-- Section À Propos -->
