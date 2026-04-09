@@ -6,7 +6,6 @@ $requet_motif = $pdo->query("SELECT id, nom FROM motif");
 $requet_coach = $pdo->query("SELECT id, nom, prenom FROM coach");
 $donnees = $requet_motif->fetchAll();
 $donnees_coach = $requet_coach->fetchAll();
-var_dump($donnees_coach);
 
 // Requete pour ajouter
 $add = "INSERT INTO prestation(nom,prenom,email,tel,date,motif_id,coach_id) VALUES (:nom, :prenom, :email, :tel, :date, :motif_id, :coach_id)";
@@ -38,18 +37,17 @@ $ajd_date = date('Y-m-d\Th:i', strtotime("+1 day"));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/formulaire.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>FitZone</title>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <p>FitZone</p>
-        </div>
         <nav>
+            <a href="index.php" class="logo"><img src="../assets/img/logo.svg" alt="FitZone Logo"></a>
             <ul>
-                <li><a href="../../index.php">Accueil</a></li>
-                <li><a href="../pages/...">Document</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="../index.php">accueil</a></li>
+                <li><a href="documents.php">documents</a></li>
+                <li><a href="formulaire.php">contact</a></li>
             </ul>
         </nav>
     </header>
