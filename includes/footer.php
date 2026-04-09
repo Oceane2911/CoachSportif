@@ -6,8 +6,8 @@
             </section>
             <section>
                 <h3>Horaires</h3>
-                <p>Lun - Ven : 6h - 22h</p>
-                <p>Sam - Dim : 8h - 20h</p>
+                <p>Lun - Sam : 6h - 23h</p>
+                <p>Dim : Fermé</p>
             </section>
             <section>
                 <h3>Contact</h3>
