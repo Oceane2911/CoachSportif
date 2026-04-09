@@ -1,6 +1,5 @@
 <?php 
 include 'config/config.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
