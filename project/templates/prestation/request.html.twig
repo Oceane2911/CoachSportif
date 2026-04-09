@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prestation index
+{% endblock %}
+
+{% block body %}
+	<h1>Demande de rendez-vous</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				{# <th>Id</th> #}
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Email</th>
+				<th>Tel</th>
+				<th>Date</th>
+				<th>Type Séance</th>
+				<th>Coach</th>
+				<th>Edit</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for prestation in prestations %}
+				{% if prestation.isValid == false %}
+					<tr>
+						{# <td>{{ prestation.id }}</td> #}
+						<td>{{ prestation.nom }}</td>
+						<td>{{ prestation.prenom }}</td>
+						<td>{{ prestation.email }}</td>
+						<td>{{ prestation.tel }}</td>
+						<td>{{ prestation.date ? prestation.date|date('Y-m-d H:i:s') : '' }}</td>
+						<td>{{ prestation.motif.nom}}</td>
+						<td>{{ prestation.coach.nom}}
+							{{prestation.coach.prenom}}</td>
+						<td>
+							<a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}">edit</a>
+						</td>
+					</tr>
+				{% endif %}
+			{% else %}
+				<tr>
+					<td colspan="7">Pas de rendez-vous</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}
