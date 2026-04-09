@@ -1,6 +1,4 @@
-<?php 
-include '../config/config.php';
-?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,6 +20,7 @@ include '../config/config.php';
             </ul>
         </nav>
     </header>
+    
     <main>
         <div class="conteneur">
             <article class="documents">
@@ -30,17 +29,12 @@ include '../config/config.php';
                 <p>Accédez à vos documents personnalisés en toute sécurité.<br>Entrez votre code secret reçu par email pour consulter les contenus envoyés par votre coach sportif.</p>
             </article>
             <div class="form-container">
-                <form action="documents.php" method="post">
-                    <div class="input">
-                        <label for="code_secret">code</label>
-                        <input type="password" name="code_secret" placeholder="Entrez votre code secret..." required>
-                    </div>
-                    <button class="btn" type="submit">récupérer maintenant</button>
-                </form>
+                <p>vous n'avez pas les accès requis</p>
             </div>
         </div>
     </main>
-<footer>
+
+    <footer>
         <div class="footer-conteneur">
             <section>
                 <img src="../assets/img/logo.svg" alt="Logo FitZone">

@@ -120,7 +120,7 @@ $max_date = date('Y-m-d\T23:00', strtotime("+30 day"));
         </a>
         <ul>
             <li><a href="../index.php">accueil</a></li>
-            <li><a href="documents.php">documents</a></li>
+            <li><a href="no-access.php">documents</a></li>
             <li><a href="formulaire.php">contact</a></li>
         </ul>
     </nav>

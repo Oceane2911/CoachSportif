@@ -55,13 +55,17 @@ main::before {
     color: #ff3b5c;
 }
 
-.documents p {
+.conteneur p {
     font-size: 1rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.80);
     line-height: 1.65;
     font-family: Arial, sans-serif;
     font-size: 0.95rem;
+}
+
+.form-container p{
+    font-size: 20px;
 }
 
 /* ===== FORMULAIRE ===== */
@@ -71,6 +75,9 @@ main::before {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     padding: 48px 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-container form {
