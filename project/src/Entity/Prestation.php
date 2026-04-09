@@ -44,7 +44,7 @@ class Prestation
     #[ORM\OneToMany(targetEntity: Document::class, mappedBy: 'prestation')]
     private Collection $documents;
 
-    #[ORM\Column(options: ["default" => false])]
+    #[ORM\Column(options: ['default' => false])]
     private ?bool $isValid = false;
 
     public function __construct()
