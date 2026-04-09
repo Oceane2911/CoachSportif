@@ -44,6 +44,9 @@ class Prestation
     #[ORM\OneToMany(targetEntity: Document::class, mappedBy: 'prestation')]
     private Collection $documents;
 
+    #[ORM\Column(options: ['default' => false])]
+    private ?bool $isValid = false;
+
     public function __construct()
     {
         $this->documents = new ArrayCollection();
@@ -164,6 +167,18 @@ class Prestation
                 $document->setPrestation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isValid(): ?bool
+    {
+        return $this->isValid;
+    }
+
+    public function setIsValid(bool $isValid): static
+    {
+        $this->isValid = $isValid;
 
         return $this;
     }

@@ -1,42 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Prestation{% endblock %}
+{% block title %}Prestation
+{% endblock %}
 
 {% block body %}
-    <h1>Prestation</h1>
+	<div>
+		<h1>Information</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ prestation.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ prestation.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ prestation.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ prestation.email }}</td>
-            </tr>
-            <tr>
-                <th>Tel</th>
-                <td>{{ prestation.tel }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ prestation.date ? prestation.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<a href="{{ path('app_prestation_index') }}"></a>
+	</div>
+	<table class="table show">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ prestation.id }}</td>
+			</tr>
+			<tr>
+				<th>Nom</th>
+				<td>{{ prestation.nom }}</td>
+			</tr>
+			<tr>
+				<th>Prenom</th>
+				<td>{{ prestation.prenom }}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{ prestation.email }}</td>
+			</tr>
+			<tr>
+				<th>Tel</th>
+				<td>{{ prestation.tel }}</td>
+			</tr>
+			<tr>
+				<th>Date</th>
+				<td>{{ prestation.date ? prestation.date|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('app_prestation_index') }}">back to list</a>
 
-    <a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}">edit</a>
+	<a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}">edit</a>
 
-    {{ include('prestation/_delete_form.html.twig') }}
+	{{ include('prestation/_delete_form.html.twig') }}
 {% endblock %}

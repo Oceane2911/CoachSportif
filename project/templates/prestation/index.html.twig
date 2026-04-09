@@ -1,43 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Prestation index{% endblock %}
+{% block title %}Prestation index
+{% endblock %}
 
 {% block body %}
-    <h1>Prestation index</h1>
+	<h1>Dashboard</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Tel</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for prestation in prestations %}
-            <tr>
-                <td>{{ prestation.id }}</td>
-                <td>{{ prestation.nom }}</td>
-                <td>{{ prestation.prenom }}</td>
-                <td>{{ prestation.email }}</td>
-                <td>{{ prestation.tel }}</td>
-                <td>{{ prestation.date ? prestation.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_prestation_show', {'id': prestation.id}) }}">show</a>
-                    <a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<div class="table-wrapped">
+		<table class="table">
+			<thead>
+				<tr>
+					{# <th>Id</th> #}
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Email</th>
+					<th>Tel</th>
+					<th>Date</th>
+					<th>Type Séance</th>
+					<th>Show</th>
 
-    <a href="{{ path('app_prestation_new') }}">Create new</a>
+				</tr>
+			</thead>
+			<tbody>
+				{% for prestation in prestations %}
+					{% if prestation.isValid %}
+						<tr>
+							{# <td>{{ prestation.id }}</td> #}
+							<td>{{ prestation.nom }}</td>
+							<td>{{ prestation.prenom }}</td>
+							<td>{{ prestation.email }}</td>
+							<td>{{ prestation.tel }}</td>
+							<td>{{ prestation.date ? prestation.date|date('Y-m-d H:i:s') : '' }}</td>
+							<td>{{ prestation.date ? prestation.date|date('Y-m-d H:i:s') : '' }}</td>
+							<td>
+								<a href="{{ path('app_prestation_show', {'id': prestation.id}) }}">show</a>
+							</td>
+						</tr>
+					{% endif %}
+				{% else %}
+					<tr>
+						<td colspan="7">Pas de rendez-vous</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+	<a href="{{ path('app_prestation_new') }}">Create new</a>
 {% endblock %}

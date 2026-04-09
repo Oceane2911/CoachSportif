@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/prestation')]
+#[Route('/')]
 final class PrestationController extends AbstractController
 {
     #[Route(name: 'app_prestation_index', methods: ['GET'])]
@@ -22,6 +22,13 @@ final class PrestationController extends AbstractController
         ]);
     }
 
+    #[Route('/request',name:'app_prestation_request', methods:['GET'])]
+    public function request(PrestationRepository $prestationRepository): Response
+    {
+        return $this->render('prestation/request.html.twig', [
+            'prestations' => $prestationRepository->findAll(),
+        ]);
+    }
     #[Route('/new', name: 'app_prestation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
