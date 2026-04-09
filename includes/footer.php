@@ -1,7 +1,7 @@
 <footer>
         <div class="footer-conteneur">
             <section>
-                <img src="assets/img/logo.svg" alt="Logo FitZone">
+                <img src="<?= $baseUrl ?>/assets/img/logo.svg" alt="Logo FitZone">
                 <p>Votre partenaire fitness depuis 2014</p>
             </section>
             <section>

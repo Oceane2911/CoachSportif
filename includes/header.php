@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitZone - Votre Salle de Sport</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/style.css">
     <?php if (isset($css_supplementaire)): ?>
         <link rel="stylesheet" href="<?= $css_supplementaire ?>">
     <?php endif; ?>
@@ -13,7 +13,7 @@
     <!-- Navigation -->
     <header>
         <nav>
-            <a href="index.php" class="logo"><img src="assets/img/logo.svg" alt="FitZone Logo"></a>
+            <a href="index.php" class="logo"><img src="<?= $baseUrl ?>/assets/img/logo.svg" alt="FitZone Logo"></a>
             <ul>
                 <li><a href="index.php">accueil</a></li>
                 <li><a href="pages/documents.php">documents</a></li>
