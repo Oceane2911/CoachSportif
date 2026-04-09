@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Coach Sportif
+{% endblock %}
+
+{% block body %}
+	<div class="prestation">
+		<form>
+			<table>
+				<thead>
+					<tr>
+						<td>Nom</td>
+						<td>Prenom</td>
+						<td>Email</td>
+						<td>Telephone</td>
+						<td>Motif</td>
+						<td>Coach</td>
+						<td>Date</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for prestation in prestations %}
+						{% if not (prestation.isValid) %}
+							<tr>
+								<td>{{prestation.nom}}</td>
+								<td>{{prestation.prenom}}</td>
+								<td>{{prestation.email}}</td>
+								<td>{{prestation.tel}}</td>
+								<td>{{prestation.motif.nom}}</td>
+								<td>{{prestation.coach.nom}}</td>
+								<td>{{prestation.date ? prestation.date|date('d m Y H:i') : ''}}</td>
+								<td></td>
+							</tr>
+						{% endif %}
+					{% endfor %}
+				</tbody>
+			</form>
+		</tbody>
+	</div>
+{% endblock %}
