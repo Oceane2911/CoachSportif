@@ -17,7 +17,7 @@
             <ul>
                 <li><a href="index.php">accueil</a></li>
                 <li><a href="pages/documents.php">documents</a></li>
-                <li><a href="pages/contact.php">contact</a></li>
+                <li><a href="pages/formulaire.php">contact</a></li>
             </ul>
         </nav>
     </header>
