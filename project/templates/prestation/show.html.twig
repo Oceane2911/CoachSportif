@@ -4,10 +4,10 @@
 {% endblock %}
 
 {% block body %}
-	<div>
+	<div class="info">
+		<a href="{{ path('app_prestation_index') }}" class="return">&#8592;</a>
 		<h1>Information</h1>
 
-		<a href="{{ path('app_prestation_index') }}"></a>
 	</div>
 	<table class="table show">
 		<tbody>
@@ -38,8 +38,9 @@
 		</tbody>
 	</table>
 
+	<div class="center show-actions">
+		<a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}" class="btn">edit</a>
 
-	<a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}">edit</a>
-
-	{{ include('prestation/_delete_form.html.twig') }}
+		{{ include('prestation/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

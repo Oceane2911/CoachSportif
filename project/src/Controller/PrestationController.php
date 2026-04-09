@@ -29,6 +29,8 @@ final class PrestationController extends AbstractController
             'prestations' => $prestationRepository->findAll(),
         ]);
     }
+
+
     #[Route('/new', name: 'app_prestation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -40,7 +42,7 @@ final class PrestationController extends AbstractController
             $entityManager->persist($prestation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_prestation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_prestation_request', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('prestation/new.html.twig', [
@@ -66,7 +68,7 @@ final class PrestationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_prestation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_prestation_request', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('prestation/edit.html.twig', [
