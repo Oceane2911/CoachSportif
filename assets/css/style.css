@@ -1,0 +1,228 @@
+/* 
+============================================================
+    IMPORTS & FONTS
+============================================================ 
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap');
+
+
+/* 
+============================================================
+    VARIABLES CSS
+============================================================ 
+*/
+:root {
+    --red: #ff4757;
+    --primary-grey: #1a1a1a;
+    --light-color: #f8f9fa;
+    --secondary-grey: #333;
+    --footer-text: #ffffffcc;
+}
+
+/* 
+============================================================
+    GLOBAL
+============================================================ 
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+}
+
+
+/* 
+============================================================
+    TYPOGRAPHIE
+============================================================ 
+*/
+h2, h3, h4 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+h2 > span {
+    color: var(--red);
+}
+
+
+/* 
+============================================================
+    LIENS & BOUTONS
+============================================================ 
+*/
+a:hover {
+    color: var(--red);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--red);
+    color: white;
+    padding: 1.2rem 3rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    user-select: none;
+}
+
+.btn:hover {
+    background-color: var(--red);
+    transform: translateY(-3px);
+    color: white;
+}
+
+/* 
+============================================================
+    LAYOUT UTILITAIRES
+============================================================ 
+*/
+.conteneur {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* 
+============================================================
+    HEADER & NAVIGATION
+============================================================ 
+*/
+header {
+    background-color: var(--primary-grey);
+    padding: 1.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+    padding: 0 0.5rem;
+}
+
+nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.logo {
+    width: 150px;
+    user-select: none;
+}
+
+.logo img {
+    width: 100%;
+    display: block;
+    filter: grayscale(100%) brightness(0) invert(1);
+    transition: filter 0.3s;
+}
+
+.logo img:hover {
+    filter: grayscale(0%) brightness(1) invert(0);
+    cursor: pointer;
+}
+
+/* 
+============================================================
+    FOOTER
+============================================================ 
+*/
+footer {
+    background-color: var(--primary-grey);
+    color: white;
+    padding: 3rem 0;
+}
+
+.footer-conteneur {
+    max-width: 65%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer section h3 {
+    color: var(--red);
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+}
+
+footer section p {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    color: var(--footer-text);
+    font-weight: 300;
+}
+
+.copyright {
+    max-width: 65%;
+    margin: 0 auto;
+    padding: 2rem 2rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--footer-text);
+    font-size: 0.9rem;
+}
+
+/* 
+============================================================
+    RESPONSIVE — max-width: 968px (A REFAIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE)
+============================================================ 
+*/
+@media (max-width: 968px) {
+
+    /* Navigation */
+    nav {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* Footer */
+    .footer-conteneur {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

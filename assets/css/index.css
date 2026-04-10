@@ -1,0 +1,310 @@
+/* 
+============================================================
+    SECTION HERO
+============================================================ 
+*/
+.hero {
+    position: relative;
+    background-image: url('../img/presentation.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4.5rem;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.hero p {
+    font-size: 1.9rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+
+/* 
+============================================================
+    SECTION À PROPOS
+============================================================ 
+*/
+#apropos {
+    padding: 6rem 2rem;
+    background-color: var(--light-color);
+}
+
+#apropos > .conteneur {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+#apropos h2 {
+    text-align: left;
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+#apropos h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: 1a1a1a;
+    margin-bottom: 2rem;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+#apropos .conteneur > article {
+    padding-left: 2rem;
+}
+
+#apropos p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--secondary-grey);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.galerie {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.galerie > img:first-child {
+    grid-column: 1 / 3;
+    height: 250px;
+}
+
+.galerie > img:nth-child(2),
+.galerie > img:nth-child(3) {
+    height: 300px;
+}
+
+.galerie > img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    user-select: none;
+    cursor: pointer;
+}
+
+.galerie img:hover {
+    transform: scale(1.05);
+    overflow: hidden;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #555;
+    font-weight: 400;
+}
+
+/*
+============================================================
+    SECTION PROGRAMMES 
+============================================================ 
+*/
+#programmes {
+    padding: 6rem 2rem;
+}
+
+#programmes h2 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--secondary-grey);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.raisons {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    margin-top: 3rem;
+    align-items: center;
+}
+
+.liste h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-grey);
+}
+
+
+.aside {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.aside img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    user-select: none;
+    cursor: pointer;
+}
+
+.aside img:hover {
+    transform: scale(1.05);
+    overflow: hidden;
+}
+
+
+.liste {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.liste article {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Numéros dans les articles de la liste */
+.liste > article > strong {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    background-color: var(--red);
+    color: white;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+
+.liste > div > p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--secondary-grey);
+    font-weight: 300;
+}
+
+
+/* 
+============================================================
+    RESPONSIVE — max-width: 968px (A REFAIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE)
+============================================================ 
+*/
+@media (max-width: 968px) {    
+    /* Hero */
+    .hero {
+        margin-top: 120px;
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .hero h1 + p {
+        font-size: 1rem;
+    }
+
+    /* Section À Propos */
+    #apropos .conteneur {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    #apropos .conteneur > article {
+        padding-left: 0;
+    }
+
+    #apropos h2 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    #apropos h3 {
+        font-size: 1.3rem;
+    }
+
+    figure {
+        grid-template-columns: 1fr;
+    }
+
+    figure > img:first-child {
+        grid-column: 1;
+        height: 200px;
+    }
+
+    figure > img:nth-child(2),
+    figure > img:nth-child(3) {
+        height: 200px;
+    }
+
+    /* Section Programmes */
+    .raisons {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    section aside {
+        grid-template-columns: 1fr;
+    }
+
+    aside img {
+        height: 300px;
+    }
+
+    .liste article strong {
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+    }
+
+}
