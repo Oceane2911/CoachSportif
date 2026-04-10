@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Prestation
+{% block title %}Coach Sportif
 {% endblock %}
 
 {% block body %}
@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<th>Date</th>
-				<td>{{ prestation.date ? prestation.date|date('Y-m-d H:i:s') : '' }}</td>
+				<td>{{ prestation.date ? prestation.date|date('Y-m-d H:i') : '' }}</td>
 			</tr>
 		</tbody>
 	</table>
