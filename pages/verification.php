@@ -1,31 +1,11 @@
 <?php
-// Démarrage de la session
-// session_start();
-
 require_once '../config/config.php';
 
 // Récupération de l'UUID depuis l'URL (lien reçu par mail)
 $uuid = $_GET['uuid'] ?? '';
 
 // Si aucun UUID fourni, accès refusé
-if (empty($uuid)) {
-    header('Location: no-access.php');
-    die;
-}
-
-// Vérification que l'UUID correspond à une prestation en BDD
-$request = $pdo->prepare("
-    SELECT p.nom, p.prenom, p.email
-    FROM document d
-    JOIN prestation p ON d.prestation_id = p.id
-    WHERE d.uuid = :uuid
-    LIMIT 1
-");
-$request->execute([':uuid' => $uuid]);
-$prestation = $request->fetch(PDO::FETCH_ASSOC);
-
-// Si l'UUID est inconnu, accès refusé
-if (!$prestation) {
+if (empty($uuid) && $_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: no-access.php');
     die;
 }
@@ -34,6 +14,23 @@ if (!$prestation) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $code = $_POST['code'] ?? '';
     $uuidPost = $_POST['uuid'] ?? '';
+
+    // Vérification que l'UUID correspond à une prestation en BDD
+    $request = $pdo->prepare("
+        SELECT p.nom, p.prenom, p.email
+        FROM document d
+        JOIN prestation p ON d.prestation_id = p.id
+        WHERE d.uuid = :uuid
+        LIMIT 1
+    ");
+    $request->execute([':uuid' => $uuidPost]);
+    $prestation = $request->fetch(PDO::FETCH_ASSOC);
+
+    // Si l'UUID est inconnu, accès refusé
+    if (!$prestation) {
+        header('Location: no-access.php');
+        die;
+    }
 
     // Vérification que le code correspond à l'UUID en BDD
     $codeBdd = $pdo->prepare("
@@ -46,8 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $codeBdd->execute([':uuid' => $uuidPost, ':code' => $code]);
     $documentValide = $codeBdd->fetch();
     if ($documentValide) {
-        // Code valide → on stocke l'accès en session et on redirige
-        $_SESSION['uuid_valide'] = $uuidPost;
         header('Location: documents.php?uuid=' . urlencode($uuidPost));
         die;
     } else {

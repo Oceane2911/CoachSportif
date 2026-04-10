@@ -1,7 +1,4 @@
 <?php 
-// Démarrage de la session
-session_start();
-
 require_once '../config/config.php';
 
 // Récupération de l'UUID depuis l'URL
@@ -9,12 +6,6 @@ $uuid = $_GET['uuid'] ?? '';
 
 // Si aucun UUID fourni, accès refusé
 if (empty($uuid)) {
-    header('Location: no-access.php');
-    die;
-}
-
-// Vérification que le client a bien validé son code sur verification.php
-if (!isset($_SESSION['uuid_valide']) || $_SESSION['uuid_valide'] !== $uuid) {
     header('Location: no-access.php');
     die;
 }

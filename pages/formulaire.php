@@ -144,29 +144,25 @@ $max_date = date('Y-m-d\T23:00', strtotime("+30 day"));
                 <!-- Prénom -->
                 <div class="input">
                     <label for="firstname">Prénom</label>
-                    <input type="text" name="firstname" placeholder="Prénom"
-                           value="<?= $prenom ?>" required>
+                    <input type="text" name="firstname" placeholder="Prénom" value="<?= $prenom ?>" required>
                 </div>
 
                 <!-- Nom -->
                 <div class="input">
                     <label for="lastname">Nom</label>
-                    <input type="text" name="lastname" placeholder="Nom"
-                           value="<?= $nom ?>" required>
+                    <input type="text" name="lastname" placeholder="Nom" value="<?= $nom ?>" required>
                 </div>
 
                 <!-- Téléphone -->
                 <div class="input">
                     <label for="tel">Téléphone</label>
-                    <input type="tel" name="tel" placeholder="Téléphone"
-                           pattern="[0-9]{10}" value="<?= $tel ?>" required>
+                    <input type="tel" name="tel" placeholder="Téléphone" pattern="[0-9]{10}" value="<?= $tel ?>" required>
                 </div>
 
                 <!-- Email -->
                 <div class="input">
                     <label for="email">Email</label>
-                    <input type="email" name="email" placeholder="Email"
-                           value="<?= $email ?>" required>
+                    <input type="email" name="email" placeholder="Email" value="<?= $email ?>" required>
                 </div>
 
                 <!-- Motif -->
@@ -200,9 +196,7 @@ $max_date = date('Y-m-d\T23:00', strtotime("+30 day"));
                 <!-- Date + message d'erreur -->
                 <div class="input">
                     <label for="date">Date</label>
-                    <input type="datetime-local" name="date" placeholder="Horaire"
-                           min="<?= $min_date ?>" max="<?= $max_date ?>"
-                           value="<?= $date ?>" step="900" required>
+                    <input type="datetime-local" name="date" placeholder="Horaire" min="<?= $min_date ?>" max="<?= $max_date ?>" value="<?= $date ?>" step="900" required>
 
                     <?php if ($erreur) : ?>
                         <div class="message_heure">
