@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitZone - Votre Salle de Sport</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/documents.css">
+    <link rel="stylesheet" href="../assets/css/verification.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -15,7 +15,7 @@
             <a href="../index.php" class="logo"><img src="../assets/img/logo.svg" alt="FitZone Logo"></a>
             <ul>
                 <li><a href="../index.php">accueil</a></li>
-                <li><a href="documents.php">documents</a></li>
+                <li><a href="no-access.php">documents</a></li>
                 <li><a href="formulaire.php">contact</a></li>
             </ul>
         </nav>
