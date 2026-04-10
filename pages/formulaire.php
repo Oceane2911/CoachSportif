@@ -100,7 +100,7 @@ $max_date = date('Y-m-d\T23:00', strtotime("+30 day"));
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/formulaire.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <title>FitZone</title>
+    <title>FitZone - Coaching</title>
 </head>
 
 <!-- ================ SCRIPT  ================ -->
@@ -115,7 +115,7 @@ $max_date = date('Y-m-d\T23:00', strtotime("+30 day"));
 <!-- ================ HEADER  ================ -->
 <header>
     <nav>
-        <a href="index.php" class="logo">
+        <a href="../index.php" class="logo">
             <img src="../assets/img/logo.svg" alt="FitZone Logo">
         </a>
         <ul>

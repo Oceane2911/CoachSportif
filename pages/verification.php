@@ -1,27 +1,60 @@
 <?php
+// Démarrage de la session
 session_start();
+
 require_once '../config/config.php';
 
+// Récupération de l'UUID depuis l'URL (lien reçu par mail)
 $uuid = $_GET['uuid'] ?? '';
 
+// Si aucun UUID fourni, accès refusé
 if (empty($uuid)) {
     header('Location: no-access.php');
     die;
 }
 
-$uuidVerified = $pdo->prepare("
+// Vérification que l'UUID correspond à une prestation en BDD
+$request = $pdo->prepare("
     SELECT p.nom, p.prenom, p.email
     FROM document d
     JOIN prestation p ON d.prestation_id = p.id
-    WHERE d.uuid = UNHEX(REPLACE(:uuid, '-', ''))
+    WHERE d.uuid = :uuid
     LIMIT 1
 ");
-$uuidVerified->execute([':uuid' => $uuid]);
-$prestation = $uuidVerified->fetch(PDO::FETCH_ASSOC);
+$request->execute([':uuid' => $uuid]);
+$prestation = $request->fetch(PDO::FETCH_ASSOC);
 
+// Si l'UUID est inconnu, accès refusé
 if (!$prestation) {
     header('Location: ../no-access.php');
     die;
+}
+
+// Traitement du formulaire de vérification du code
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $code = $_POST['code'] ?? '';
+    $uuidPost = $_POST['uuid'] ?? '';
+
+    // Vérification que le code correspond à l'UUID en BDD
+    $codeBdd = $pdo->prepare("
+        SELECT id 
+        FROM document 
+        WHERE uuid = :uuid 
+        AND code_acces = :code 
+        LIMIT 1
+    ");
+    $codeBdd->execute([':uuid' => $uuidPost, ':code' => $code]);
+    $documentValide = $codeBdd->fetch();
+
+    if ($documentValide) {
+        // Code valide → on stocke l'accès en session et on redirige
+        $_SESSION['uuid_valide'] = $uuidPost;
+        header('Location: documents.php?uuid=' . urlencode($uuidPost));
+        die;
+    } else {
+        // Code incorrect → message d'erreur
+        $error = 'Code incorrect. Veuillez réessayer.';
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -29,7 +62,7 @@ if (!$prestation) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitZone - Votre Salle de Sport</title>
+    <title>FitZone - Vérification</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/verification.css">
 </head>
@@ -55,9 +88,13 @@ if (!$prestation) {
             <div class="form-container">
                 <form action="verification.php" method="post">
                     <div class="input">
-                        <label for="code_secret">code</label>
-                        <input type="password" name="code_secret" placeholder="Entrez votre code secret..." required>
+                        <input type="hidden" name="uuid" value="<?= htmlspecialchars($uuid) ?>">
+                        <label for="code">code</label>
+                        <input type="password" name="code" placeholder="Entrez votre code secret..." required>
                     </div>
+                    <?php if (!empty($error)): ?>
+                    <p class="error"><?= $error ?></p>
+                    <?php endif; ?>
                     <button class="btn" type="submit">récupérer maintenant</button>
                 </form>
             </div>
