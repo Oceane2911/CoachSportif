@@ -155,3 +155,10 @@ main::before {
 .btn:active {
     transform: translateY(0);
 }
+
+.error {
+    color: #9f0111;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
