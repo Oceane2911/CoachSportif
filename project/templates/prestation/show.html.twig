@@ -40,12 +40,7 @@
         </form>
     </div>
 
-    {# ── Documents existants ── #}
-    {% if prestation.documents|length > 0 %}
-        <div class="document-list">
-            <h2>Documents enregistrés</h2>
-        </div>
-    {% endif %}
+    
 
     <div class="center show-actions">
         <a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}" class="btn">edit</a>

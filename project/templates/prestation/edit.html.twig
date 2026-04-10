@@ -7,29 +7,17 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{asset('styles/form.css')}}">
 {% endblock %}
+
 {% block body %}
-<div class="info">
+	<div class="info">
+		<a href="{{ path('app_validation') }}" class="return">&#8592;</a>
+		<h1>Edit prestation</h1>
 
-	<a href="{{ path('app_validation') }}" class="return">&#8592;</a>
-
-
-	{% extends 'base.html.twig' %}
-
-	{% block title %}Edit Prestation
-	{% endblock %}
-	{% block stylesheets %}
-		<link rel="stylesheet" href="{{asset('styles/form.css')}}">
-	{% endblock %}
-	{% block body %}
-		<div class="info">
-			<a href="{{ path('app_validation') }}" class="return">&#8592;</a>
-			<h1>Edit prestation</h1>
-
+	</div>
+	<div class="center">
+		<div class="form-wrapper">
+			{{ include('prestation/_form.html.twig', {'button_label': 'Update'}) }}
+			{{ include('prestation/_delete_form.html.twig') }}
 		</div>
-		<div class="center">
-			<div class="form-wrapper">
-				{{ include('prestation/_form.html.twig', {'button_label': 'Update'}) }}
-				{{ include('prestation/_delete_form.html.twig') }}
-			</div>
-		</div>
-	{% endblock %}
+	</div>
+{% endblock %}
