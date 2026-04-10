@@ -205,7 +205,7 @@ $max_date = date('Y-m-d\T23:00', strtotime("+30 day"));
                            value="<?= $date ?>" step="900" required>
 
                     <?php if ($erreur) : ?>
-                        <div class="message_erreur">
+                        <div class="message_heure">
                             <?php switch ($erreur) {
                                 case 'heure':    echo "Veuillez choisir un horaire entre 06:00 et 23:00."; break;
                                 case 'dimanche': echo "Nous sommes fermés le dimanche."; break;
@@ -217,7 +217,6 @@ $max_date = date('Y-m-d\T23:00', strtotime("+30 day"));
                 </div>
 
                 <button type="submit">Envoyer →</button>
-
             </form>
         </article>
     </section>

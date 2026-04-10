@@ -1,6 +1,6 @@
 <?php
 // Démarrage de la session
-session_start();
+// session_start();
 
 require_once '../config/config.php';
 
@@ -26,7 +26,7 @@ $prestation = $request->fetch(PDO::FETCH_ASSOC);
 
 // Si l'UUID est inconnu, accès refusé
 if (!$prestation) {
-    header('Location: ../no-access.php');
+    header('Location: no-access.php');
     die;
 }
 
@@ -40,12 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         SELECT id 
         FROM document 
         WHERE uuid = :uuid 
-        AND code_acces = :code 
+        AND access_code = :code 
         LIMIT 1
     ");
     $codeBdd->execute([':uuid' => $uuidPost, ':code' => $code]);
     $documentValide = $codeBdd->fetch();
-
     if ($documentValide) {
         // Code valide → on stocke l'accès en session et on redirige
         $_SESSION['uuid_valide'] = $uuidPost;
