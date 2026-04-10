@@ -39,7 +39,7 @@ final class PrestationValidatorController extends AbstractController
         $prestation->setIsValid(true);
         $entityManager->flush();
 
-        // Envoi du mail de confirmation
+        // Envoi du mail de confirmation de rendez-vous
         $html = $twig->render('email/prestation_confirmed.html.twig', [
             'prestation' => $prestation,
         ]);

@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Controller;
@@ -80,4 +79,3 @@ final class PrestationController extends AbstractController
         return $this->redirectToRoute('app_prestation_index', [], Response::HTTP_SEE_OTHER);
     }
 }
-

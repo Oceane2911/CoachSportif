@@ -1,46 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Coach Sportif
-{% endblock %}
+{% block title %}Coach Sportif{% endblock %}
 
 {% block body %}
-	<div class="info">
-		<a href="{{ path('app_prestation_index') }}" class="return">&#8592;</a>
-		<h1>Information</h1>
+    <div class="info">
+        <a href="{{ path('app_prestation_index') }}" class="return">&#8592;</a>
+        <h1>Information</h1>
+    </div>
 
-	</div>
-	<table class="table show">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ prestation.id }}</td>
-			</tr>
-			<tr>
-				<th>Nom</th>
-				<td>{{ prestation.nom }}</td>
-			</tr>
-			<tr>
-				<th>Prenom</th>
-				<td>{{ prestation.prenom }}</td>
-			</tr>
-			<tr>
-				<th>Email</th>
-				<td>{{ prestation.email }}</td>
-			</tr>
-			<tr>
-				<th>Tel</th>
-				<td>{{ prestation.tel }}</td>
-			</tr>
-			<tr>
-				<th>Date</th>
-				<td>{{ prestation.date ? prestation.date|date('Y-m-d H:i') : '' }}</td>
-			</tr>
-		</tbody>
-	</table>
+    <table class="table show">
+        <tbody>
+            <tr><th>Id</th><td>{{ prestation.id }}</td></tr>
+            <tr><th>Nom</th><td>{{ prestation.nom }}</td></tr>
+            <tr><th>Prenom</th><td>{{ prestation.prenom }}</td></tr>
+            <tr><th>Email</th><td>{{ prestation.email }}</td></tr>
+            <tr><th>Tel</th><td>{{ prestation.tel }}</td></tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ prestation.date ? prestation.date|date('Y-m-d H:i') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-	<div class="center show-actions">
-		<a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}" class="btn">edit</a>
+    {# ── Flash messages ── #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
 
-		{{ include('prestation/_delete_form.html.twig') }}
-	</div>
+    {# ── Upload document ── #}
+    <div class="document-upload">
+        <h2>Ajouter un document</h2>
+        <form action="{{ path('app_document_upload', {'id': prestation.id}) }}"
+              method="post" enctype="multipart/form-data">
+            <input type="file" name="document" accept=".pdf,.doc,.docx" required>
+            <button type="submit" class="btn">Envoyer le document</button>
+        </form>
+    </div>
+
+    {# ── Documents existants ── #}
+    {% if prestation.documents|length > 0 %}
+        <div class="document-list">
+            <h2>Documents enregistrés</h2>
+        </div>
+    {% endif %}
+
+    <div class="center show-actions">
+        <a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}" class="btn">edit</a>
+        {{ include('prestation/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

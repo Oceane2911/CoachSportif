@@ -14,8 +14,8 @@ class Document
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'uuid')]
-    private ?Uuid $uuid = null;
+    #[ORM\Column(type: 'string')]
+    private ?string $uuid = null;
 
     #[ORM\Column(length: 255)]
     private ?string $path = null;
@@ -23,20 +23,34 @@ class Document
     #[ORM\ManyToOne(inversedBy: 'documents')]
     private ?Prestation $prestation = null;
 
+
+    #[ORM\Column(length: 64, unique: true)]
+    private ?string $accessCode = null;
+
+    public function getAccessCode(): ?string
+    {
+        return $this->accessCode;
+    }
+
+    public function setAccessCode(string $accessCode): static
+    {
+        $this->accessCode = $accessCode;
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUuid(): ?Uuid
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(Uuid $uuid): static
+    public function setUuid(string $uuid): static
     {
         $this->uuid = $uuid;
-
         return $this;
     }
 
