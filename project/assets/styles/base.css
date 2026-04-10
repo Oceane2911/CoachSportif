@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+h1,h2,h3,h4,h5{
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+}
+/* nav */
+nav {
+    background-color: #1E1E1E;
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.nav{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navBar{
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: larger;
+}
+
+/* bouton */
+.btn-nav {
+    color: whitesmoke;
+    background-color: #FF4757;
+    padding: 1rem;
+    border-radius: 10rem;
+}
+.btn{
+    color: whitesmoke;
+    background-color: #FF4757;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 10rem;
+    margin-bottom: 2rem;
+    border: none;
+}
+
+/* centrage info header body */
+.info{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.info h1 {
+    margin: 2rem 0;
+    justify-content: center;
+}
+
+.info .return {
+    justify-self: start;
+    font-size: 2.5rem;
+    color: #1E1E1E;
+    line-height: 1;
+}
+
+h1{
+    margin:2rem;
+    display: flex;
+    justify-content: center;
+}
+.center{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+/* Table */
+.table-wrapper {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            
+        }
+
+table {
+            width: 100%;
+            border-collapse: collapse;
+            
+            
+        }
+
+thead {
+            background-color:#1E1E1E;
+        }
+
+th {
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+            position: relative;
+        }
+
+th:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+        }
+tbody tr {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+tbody tr:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: scale(1.01);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+    
+    
+}
+tbody tr:hover td{
+    color: #FF4757;
+}
+td {
+    padding: 16px 20px;
+    color: #1E1E1E;
+    font-size: 14px;
+}
+/* show */
+
+.show{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.show th{
+    color: #FF4757;
+}
+
+/* Bouton Delete dans la page show — même style que .btn */
+.show-actions form button.btn {
+    background-color: #FF4757;
+    color: whitesmoke;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    padding: 1rem 2rem;
+    border-radius: 10rem;
+    width: auto;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.show-actions form button.btn:hover {
+    background-color: #e03040;
+    transform: translateY(-1px);
+}
+
+/* ── Upload document ── */
+.document-upload {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.document-upload h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1E1E1E;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.document-upload form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.document-upload input[type="file"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px dashed rgba(255, 71, 87, 0.4);
+    border-radius: 10px;
+    background: rgba(255, 71, 87, 0.04);
+    color: #1E1E1E;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    text-align: center;
+}
+
+.document-upload input[type="file"]:hover,
+.document-upload input[type="file"]:focus {
+    border-color: #FF4757;
+    background: rgba(255, 71, 87, 0.08);
+    outline: none;
+}
+
+/* ── Documents enregistrés ── */
+.document-list {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+}
+
+.document-list h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1E1E1E;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── Flash messages (succès / erreur) ── */
+.alert {
+    max-width: 600px;
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: slideIn 0.3s ease;
+}
+
+.alert::before {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.alert-success {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #166534;
+}
+
+.alert-success::before {
+    content: '✓';
+    color: #22c55e;
+    font-weight: 700;
+}
+
+.alert-danger {
+    background: rgba(255, 71, 87, 0.1);
+    border: 1px solid rgba(255, 71, 87, 0.4);
+    color: #991b1b;
+}
+
+.alert-danger::before {
+    content: '✕';
+    color: #FF4757;
+    font-weight: 700;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 800px;
+    }
+}
